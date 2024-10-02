@@ -3,10 +3,19 @@ public class Carta {
 
 	private int valor;
 	private Palo palo;
+	private String color;
 
 	public Carta(int valor, Palo palo) {
 		this.valor = valor;
 		this.palo = palo;
+		this.color = asignarColor(palo);
+	}
+
+	private String asignarColor(Palo palo) {
+		return switch (palo) {
+			case TREBOL, PICA -> "black";
+			case DIAMANTE, CORAZON -> "red";
+		};
 	}
 
 	public int getValor() {
@@ -15,6 +24,10 @@ public class Carta {
 
 	public Palo getPalo() {
 		return palo;
+	}
+
+	public String getColor() {
+		return color;
 	}
 
 	public String toString() {
