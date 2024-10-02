@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class Juego {
 	public static void main(String[] args) {
 		Mazo mazo = new Mazo();
-		mazo.barajear();
+		//mazo.barajear();
 
 		System.out.println(mazo.estado() + "\n");
 
@@ -35,5 +37,21 @@ public class Juego {
 		mazo.recibirCartas(jugador2.devolverCartas(5));
 
 		System.out.println(mazo.estado());
+
+		ArrayList<Carta> mazoTemporal = mazo.repartir(52);
+
+		int x = 55;
+		int y = 15;
+
+		for (int i = 0; i < 52; i++) {
+			Visualizador.carta(mazoTemporal.get(i), new Posicion(x, y));
+			
+			x += 120;
+			
+			if ((i + 1) % 10 == 0) {
+				y += 120;
+				x = 55;
+			}
+		}
 	}
 }
